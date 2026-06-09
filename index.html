@@ -3,61 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About My Family - Writing Exercise</title>
+<title>Advanced Grammar Challenge</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background:#f4f6f9;
+background:linear-gradient(135deg,#141e30,#243b55);
+padding:20px;
+color:#333;
 }
 
 .container{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,.1);
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
-h1,h2{
-    color:#2c3e50;
+h1{
+text-align:center;
+margin-bottom:20px;
 }
 
-textarea{
-    width:100%;
-    min-height:120px;
-    padding:10px;
-    margin-top:10px;
+input[type=text]{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+border-radius:10px;
+border:1px solid #ccc;
 }
 
-input{
-    padding:8px;
-    margin:5px;
+.progress-container{
+background:#ddd;
+height:20px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#4caf50;
+border-radius:20px;
+transition:.3s;
+}
+
+.timer{
+text-align:right;
+font-size:20px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.question{
+background:#f5f7ff;
+padding:15px;
+margin-bottom:20px;
+border-left:5px solid #243b55;
+border-radius:10px;
+}
+
+.option{
+display:block;
+padding:8px;
+margin-top:8px;
+cursor:pointer;
 }
 
 button{
-    background:#3498db;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:5px;
-    cursor:pointer;
+width:100%;
+padding:15px;
+background:#243b55;
+color:white;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
 button:hover{
-    background:#2980b9;
+opacity:.9;
 }
 
-.correct{
-    color:green;
-    font-weight:bold;
-}
-
-.wrong{
-    color:red;
-    font-weight:bold;
+#result{
+margin-top:30px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
 }
 </style>
 </head>
@@ -65,63 +105,150 @@ button:hover{
 
 <div class="container">
 
-<hr>
+<h1>Advanced Grammar Challenge</h1>
 
-<h2>Part A: Fill in the blanks</h2>
+<input type="text" id="studentName" placeholder="Enter Your Name">
 
-<p>1. Kelly lives in
-<input id="q1"></p>
+<div class="timer">
+Time: <span id="time">300</span>s
+</div>
 
-<p>2. Kelly's mother's name is
-<input id="q2"></p>
+<div class="progress-container">
+<div class="progress-bar" id="progressBar"></div>
+</div>
 
-<p>3. Kelly's father works in a
-<input id="q3"></p>
+<form id="quiz">
 
-<p>4. Kelly's sister loves listening to
-<input id="q4"></p>
+<div class="question">
+<h3>1. Had I known about the traffic, I ______ earlier.</h3>
+<label class="option"><input type="radio" name="q1" value="a"> would leave</label>
+<label class="option"><input type="radio" name="q1" value="b"> would have left</label>
+<label class="option"><input type="radio" name="q1" value="c"> will leave</label>
+<label class="option"><input type="radio" name="q1" value="d"> left</label>
+</div>
 
-<p>5. Brandy is a pet
-<input id="q5"></p>
+<div class="question">
+<h3>2. Not only ______ the report, but she also presented it.</h3>
+<label class="option"><input type="radio" name="q2" value="a"> she wrote</label>
+<label class="option"><input type="radio" name="q2" value="b"> did she write</label>
+<label class="option"><input type="radio" name="q2" value="c"> she did write</label>
+<label class="option"><input type="radio" name="q2" value="d"> wrote she</label>
+</div>
 
-<button onclick="checkAnswers()">Check Answers</button>
+<div class="question">
+<h3>3. It was John ______ solved the problem.</h3>
+<label class="option"><input type="radio" name="q3" value="a"> who</label>
+<label class="option"><input type="radio" name="q3" value="b"> whom</label>
+<label class="option"><input type="radio" name="q3" value="c"> which</label>
+<label class="option"><input type="radio" name="q3" value="d"> whose</label>
+</div>
 
-<p id="result"></p>
+<div class="question">
+<h3>4. The students ______ for the scholarship were interviewed yesterday.</h3>
+<label class="option"><input type="radio" name="q4" value="a"> applying</label>
+<label class="option"><input type="radio" name="q4" value="b"> applied</label>
+<label class="option"><input type="radio" name="q4" value="c"> apply</label>
+<label class="option"><input type="radio" name="q4" value="d"> having apply</label>
+</div>
 
-<hr>
+<div class="question">
+<h3>5. She ______ forgotten the meeting; she never misses appointments.</h3>
+<label class="option"><input type="radio" name="q5" value="a"> must have</label>
+<label class="option"><input type="radio" name="q5" value="b"> can't have</label>
+<label class="option"><input type="radio" name="q5" value="c"> should have</label>
+<label class="option"><input type="radio" name="q5" value="d"> ought to have</label>
+</div>
 
-<h2>Part B: Write About Your Family</h2>
+<button type="button" onclick="submitQuiz()">Submit Quiz</button>
 
-<p>Write 5–8 sentences about your family.</p>
+</form>
 
-<textarea placeholder="My name is..."></textarea>
+<div id="result"></div>
 
 </div>
 
 <script>
-function checkAnswers(){
+
+const answers = {
+q1:"b",
+q2:"b",
+q3:"a",
+q4:"a",
+q5:"b"
+};
+
+let timeLeft = 300;
+
+const timer = setInterval(() => {
+timeLeft--;
+document.getElementById("time").innerText = timeLeft;
+
+if(timeLeft <= 0){
+clearInterval(timer);
+submitQuiz();
+}
+},1000);
+
+document.querySelectorAll("input[type=radio]").forEach(input=>{
+input.addEventListener("change",updateProgress);
+});
+
+function updateProgress(){
+
+const totalQuestions = 5;
+
+let answered = 0;
+
+for(let i=1;i<=5;i++){
+if(document.querySelector(`input[name=q${i}]:checked`)){
+answered++;
+}
+}
+
+document.getElementById("progressBar").style.width =
+(answered/totalQuestions)*100 + "%";
+}
+
+function submitQuiz(){
+
+clearInterval(timer);
 
 let score = 0;
 
-const answers = {
-q1:"california",
-q2:"carmen",
-q3:"bank",
-q4:"music",
-q5:"dog"
-};
+for(let q in answers){
 
-for(let id in answers){
-let user = document.getElementById(id).value.trim().toLowerCase();
+const selected =
+document.querySelector(`input[name="${q}"]:checked`);
 
-if(user === answers[id]){
+if(selected && selected.value === answers[q]){
 score++;
 }
 }
 
-document.getElementById("result").innerHTML =
-"You got " + score + " out of 5 correct!";
+const name =
+document.getElementById("studentName").value || "Student";
+
+let level;
+
+if(score === 5){
+level = "Excellent";
 }
+else if(score >= 3){
+level = "Good";
+}
+else{
+level = "Needs More Practice";
+}
+
+document.getElementById("result").innerHTML =
+`
+<h2>Certificate of Completion</h2>
+<p>${name}</p>
+<p>Score: ${score}/5</p>
+<p>${level}</p>
+`;
+}
+
 </script>
 
 </body>
